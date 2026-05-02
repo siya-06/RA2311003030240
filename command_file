@@ -1,0 +1,180 @@
+//  1. PROJECT SETUP (Node + npm)
+// Create project
+// mkdir backend-test
+// cd backend-test
+// Initialize npm
+// npm init -y
+
+// creates package.json
+
+// Install packages
+// npm install express
+
+// this creates:
+
+// node_modules/
+// package-lock.json
+// (Optional but good)
+// npm install nodemon --save-dev
+// 2. BASIC FILE SETUP
+
+// Create main file:
+
+// touch index.js
+
+// Run project:
+
+// node index.js
+
+// OR with nodemon:
+
+// npx nodemon index.js
+// 3. .gitignore (VERY IMPORTANT)
+
+// Create file:
+
+// touch .gitignore
+
+// Add this inside:
+
+// node_modules/
+// .env
+// .DS_Store
+
+// This ensures heavy/unnecessary files are NOT pushed
+
+// 4. GIT SETUP (FULL FLOW)
+// Initialize git
+// git init
+// Add files
+// git add .
+// Commit
+// git commit -m "initial commit"
+// 5. PUSH TO GITHUB (EXAM CRITICAL)
+// Create repo on GitHub
+// Name it: your_roll_number
+
+// Connect repo
+// git remote add origin https://github.com/your-username/your-repo-name.git
+// Push code
+// git branch -M main
+// git push -u origin main
+// 6. AFTER CHANGES (VERY COMMON STEP)
+// git add .
+// git commit -m "update"
+// git push
+// 7. QUICK MEMORY VERSION
+
+// Just remember this flow:
+
+// npm init -y
+// npm install express
+
+// git init
+// git add .
+// git commit -m "msg"
+
+// git remote add origin <url>
+// git push -u origin main
+// ⚠️ COMMON MISTAKES (don’t do these)
+// ❌ pushing node_modules (instant bad impression)
+// ❌ wrong repo name (they told → roll number)
+// ❌ multiple branches (they said → ONE branch only)
+// ❌ forgetting commit before push
+// 8. TEST BEFORE SUBMIT
+
+// Run:
+
+// node index.js
+
+// Check:
+
+// APIs working (Postman)
+// no errors
+//  BACKEND QUICK TEMPLATES (SAVE THIS)
+// 1. Express Server Starter (MUST KNOW)
+// const express = require('express');
+// const app = express();
+
+// app.use(express.json());
+
+// app.listen(3000, () => {
+//   console.log('Server running');
+// });
+//  2. Basic Route Patterns
+// GET
+// app.get('/items', (req, res) => {
+//   res.json([]);
+// });
+// POST
+// app.post('/items', (req, res) => {
+//   const data = req.body;
+//   res.status(201).json(data);
+// });
+// DELETE
+// app.delete('/items/:id', (req, res) => {
+//   const id = req.params.id;
+//   res.json({ message: 'Deleted', id });
+// });
+// 3. In-Memory Storage
+// let items = [];
+// 4. Create + Validation
+// app.post('/items', (req, res) => {
+//   const { id, name } = req.body;
+
+//   if (!id || !name) {
+//     return res.status(400).json({ error: 'Missing fields' });
+//   }
+
+//   const exists = items.find(i => i.id === id);
+//   if (exists) {
+//     return res.status(400).json({ error: 'Duplicate id' });
+//   }
+
+//   const item = { id, name };
+//   items.push(item);
+
+//   res.status(201).json(item);
+// });
+// 5. GET + Filter + Sort
+// app.get('/items', (req, res) => {
+//   let result = [...items];
+
+//   if (req.query.name) {
+//     result = result.filter(i => i.name === req.query.name);
+//   }
+
+//   if (req.query.sort === 'name') {
+//     result.sort((a, b) => a.name.localeCompare(b.name));
+//   }
+
+//   res.json(result);
+// });
+// 6. DELETE with Check
+// app.delete('/items/:id', (req, res) => {
+//   const id = req.params.id;
+
+//   const index = items.findIndex(i => i.id == id);
+//   if (index === -1) {
+//     return res.status(404).json({ error: 'Not found' });
+//   }
+
+//   items.splice(index, 1);
+
+//   res.json({ message: 'Deleted' });
+// });
+// 7. BONUS: Count / DSA Logic
+// app.get('/count', (req, res) => {
+//   const count = items.length;
+//   res.json({ count });
+// });
+// ULTRA-SHORT MEMORY VERSION (this is gold)
+
+// When test starts, just remember:
+
+// express → app → json middleware
+// array → CRUD
+// req.body → POST
+// req.params → DELETE
+// req.query → filter/sort
+// status codes → 200 / 201 / 400 / 404
