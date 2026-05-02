@@ -7,7 +7,8 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 3000;
 
-// In-memory storage for maintenance records
+// In-memory storage for maintenance records array datatype we'll take
+
 let maintenanceRecords = [];
 
 // POST endpoint to input 5 records with 2 fields each: ID and MechanicHours
@@ -15,7 +16,7 @@ app.post('/items', (req, res) => {
     const records = req.body.records || [];
     
     // we are taking inputs for 5 records
-    
+
     if (!Array.isArray(records) || records.length !== 5) {
         return res.status(400).json({ error: 'Please provide exactly 5 records with ID and MechanicHours fields each' });
     }
