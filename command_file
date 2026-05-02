@@ -168,9 +168,7 @@
 //   const count = items.length;
 //   res.json({ count });
 // });
-// ULTRA-SHORT MEMORY VERSION (this is gold)
 
-// When test starts, just remember:
 
 // express → app → json middleware
 // array → CRUD

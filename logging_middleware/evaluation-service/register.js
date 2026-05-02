@@ -9,21 +9,21 @@ const PORT = process.env.PORT || 3000;
 
 app.post('/bfhl', (req, res) => {
   const data = req.body.data || [];
-
   const email = "ss1132@srmist.edu.in";
   const name = "Siya Srivastava";
-  const mobileNo = "6389299955";
-  const githubusername = "siya-06";
+  const mobileNo = "6389299955"
   const rollNo = "RA2311003030240";
-  const accessCode = "QkbpxH";
-  
-
-res.status(200).json({ email, name, mobileNo, githubusername, rollNo, accessCode});
+  const clientID = "";
+  const clientSecret = "";
+  res.status(200).json({ email, name, rollNo, clientID, clientSecret });
 });
 
 app.get('/items', (req, res) => {
-  const clientID = "";
-  const clientSecret = "";
+  const data = req.body.data || [];
+  const email = "ss1132@srmist.edu.in";
+  const name = "Siya Srivastava";
+  const mobileNo = "6389299955"
+  const rollNo = "RA2311003030240";
   res.json([]);
 });
   
